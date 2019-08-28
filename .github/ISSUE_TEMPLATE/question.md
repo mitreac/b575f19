@@ -79,6 +79,7 @@ We require you to post your code, error messages, and output of your code here.
 
 ---
 # Checklist
+Replace the space in between the brackets with an X
 * [ ] Identified what you already have available to address this question
 * [ ] Identified what you need to reach an acceptable answer
 * [ ] Shown what you have done up to this point
