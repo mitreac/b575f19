@@ -3,7 +3,7 @@ name: Question
 about: Ask a question specific to class content or coding practices
 title: "[QUESTION] Describe your question here"
 labels: question
-assignees: ['betteridiot', 'mitreac']
+assignees: betteridiot, mitreac
 
 ---
 
