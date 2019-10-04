@@ -21,5 +21,10 @@ Please feel free to use these links to guide through the repo
 5. [Submitting a recipe](https://github.com/betteridiot/b575f19/wiki/Recipe)
 
 ---
-### `git pull` error
-If you get an error when you `pull` (or update) the repo that says something like "Your local changes to the following files will be overwritten by merge’", you can do a `git stash` to address this. To find out how to do this, go to https://git-scm.com/book/en/v1/Git-Tools-Stashing to read all about it.
+### Updating your local repo
+If you get an error when you `pull` (or update) the repo that says something like "Your local changes to the following files will be overwritten by merge’", you can do a `git stash` to address this. 
+
+Please see the [wiki](https://github.com/betteridiot/b575f19/wiki/Updating-your-local-repo) page that details how to update your local repo without overwritting your data. 
+
+To find out more about `git stash`, go to https://git-scm.com/book/en/v1/Git-Tools-Stashing to read all about it.
+
