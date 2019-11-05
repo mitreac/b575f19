@@ -7,7 +7,7 @@ class Pileup:
     """An object that represents the observed bases and their counts at a specific position
     
     Attributes:
-        depth_offset (int): how depth should be offset for normalization (default: 0)
+        depth_offset (int): how much depth should be offset for normalization (default: 0)
         counts (collections.Counter): Observed bases and their number of occurrences (default: None)
         depth (int): Sum of all observed base counts
         consensus (collections.namedtuple or None): The most common base and its number of occurrences
@@ -24,16 +24,16 @@ class Pileup:
             if isinstance(counts, Counter):
                 self._counts = counts
             else:
-                raise ValueError('counts must be a collections.Counter')
+                raise ValueError('counts must be of type collections.Counter')
     
     @property
     def depth(self):
-        return sum(self._counts.values()) + self.depth_offset
+        return sum(self.counts.values()) + self.depth_offset
     
     @property
     def consensus(self):
         """Read-only"""
-        consensus = self._counts.most_common(1)
+        consensus = self.counts.most_common(1)
         return Consensus(*consensus[0]) if consensus else None
     
     @property
@@ -46,6 +46,8 @@ class Pileup:
         """Read-only"""
         if self.consensus:
             return self.consensus.count / self.depth
+        else:
+            return None
 
     def update(self, observation):
         """Update the observed base counts
@@ -68,9 +70,11 @@ class Pileup:
     def __eq__(self, other):
         if isinstance(other, Pileup):
             return self.consensus.base == other.consensus.base
+        else:
+            raise ValueError('Comparison must be between two Pileup objects')
     
     def __len__(self):
-        return len(self.counts.keys())
+        return len(self.counts)
     
     @classmethod
     def __dir__(cls):
@@ -82,3 +86,11 @@ class Pileup:
             'counts': self.counts,
             'consensus': tuple(self.consensus)
         }
+    
+    def is_valid(self):
+        """Check whether or not Pileup object contains data
+        
+        Returns:
+            (bool): True if data present, otherwise False
+        """
+        return True if self.counts else False
